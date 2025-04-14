@@ -1,14 +1,12 @@
+const path = require('path');
+
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
 
 router.get('/', (req, res) => {
-    res.send(`
-        <form action="product" method="POST">
-            <input type="text" name="search" placeholder="What's you find?" />
-            <button type="submit">Search</button>
-        </form>    
-    `);
+    res.send(path.join(__dirname, '../', 'views', 'shop.html'));
 });
 
 
