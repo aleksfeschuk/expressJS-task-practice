@@ -1,13 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const products = [
-    { id: 1, name: 'iPhone 14' },
-    { id: 2, name: 'Samsung Galaxy S22' },
-    { id: 3, name: 'MacBook Air' },
-    { id: 4, name: 'Dell XPS 13' },
-    { id: 5, name: 'iPad Pro' },
-];
 
 router.get('/', (req, res) => {
     res.send(`
@@ -21,6 +14,7 @@ router.get('/', (req, res) => {
 
 router.post('/product', (req, res) => {
     const searchTerm = req.body.search.toLowerCase();
+    const products = req.products;
 
     const filteredProducts = products.filter(product => 
         product.name.toLowerCase().includes(searchTerm)
