@@ -1,6 +1,8 @@
 const db = require('../db');
 
-async function getAuthorById(req, res) {
+const asyncHandler = require("express-async-handler");
+
+const getAuthorById =  asyncHandler(async (req, res) => {
     const { authorId } = req.params;
 
     const author = await db.getAuthorById(Number(authorId));
@@ -10,8 +12,8 @@ async function getAuthorById(req, res) {
         return;
     }
 
-    res.send(`Author Name: ${author.name}`);
-};
+    res.send(`Author Name: ${author.name}`)
+});
 
 module.exports = { getAuthorById };
 
